@@ -61,18 +61,20 @@ def print_page(page_index,count,start,end, index):
 			#checking if it is Ask HN
 			if not title.find("Ask HN:"):
 				continue
-			print "Index-->"+str(index)
-			print title, link
+
 			dataset2_block = single_news.next_sibling.find("td", class_="subtext")
 		 	score = dataset2_block.find("span", class_="score").contents[0].split(' ')[0]
-		 	print score
 		 	author = dataset2_block.find("a",class_="hnuser").contents[0]
 		 	time = dataset2_block.find("span",class_="age").contents[0].contents[0]
+			print "Index-->"+str(index)
+			print title, link
+		 	print score
 		 	print author, time
 
 		 	index+=1
 
-		if index%4 is 0:
+		if (index%4 is 0):
+			print "4 waala"
 		 	print "PROMPT:If you want to continue press ENTER else press q+ENTER to exit"
 			x = raw_input()
 			if x is 'q':
@@ -80,6 +82,9 @@ def print_page(page_index,count,start,end, index):
 				global stopped
 				stopped=True
 				break
+		if (count >= end):
+			stopped = True
+			break
 
 	return count,index
 	"""
