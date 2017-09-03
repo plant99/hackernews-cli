@@ -8,7 +8,7 @@ from urllib import urlopen
 from bs4 import BeautifulSoup
 import jobs
 import news
-
+import ask
 #parser setup
 stopped = False
 base_url = "http://news.ycombinator.com"
@@ -37,6 +37,6 @@ else:
 if dq == "news":
 	news.news_handler(start, number_of_posts)
 elif dq == 'ask':
-	ask_handler(start, number_of_posts)
+	ask.ask_handler(start, number_of_posts)
 elif dq == 'jobs':
 	jobs.jobs_handler(start, start+number_of_posts)
