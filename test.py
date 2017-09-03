@@ -11,5 +11,5 @@ class bcolors:
     PURPLE = '\033[35m'
 
 
-for i in range (200):
-	print '\033['+str(i)+'m' + str(i) + '\033[0m'
+x = raw_input("This?")
+print x
