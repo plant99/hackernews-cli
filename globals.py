@@ -1,7 +1,10 @@
-
+import sys
 
 import textwrap
 base_url = "http://news.ycombinator.com"
+
+CURSOR_UP_ONE = '\x1b[1A'
+ERASE_LINE = '\x1b[2K'
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -38,3 +41,7 @@ def print_modified(sentence, color):
 			print  bcolors.PURPLE +line_tbp+ bcolors.ENDC 
 		elif color is 'yellow':
 			print  bcolors.YELLOW +line_tbp+ bcolors.ENDC 	
+
+def delete_line():
+	sys.stdout.write(CURSOR_UP_ONE)
+	sys.stdout.write(ERASE_LINE)

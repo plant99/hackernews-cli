@@ -73,6 +73,8 @@ def print_page_ask(page_index,count,start,end, index):
 			if (index%4 is 0):
 			 	print bcolors.FAIL + "PROMPT:If you want to continue press ENTER else press q+ENTER to exit" + bcolors.ENDC
 				x = raw_input()
+				globals.delete_line()
+				globals.delete_line()
 				if x is 'q':
 					print "Bye!"
 					global stopped

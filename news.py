@@ -1,4 +1,4 @@
-
+import sys
 import argparse
 import requests
 import json
@@ -11,7 +11,6 @@ import globals
 base_url = globals.base_url
 bcolors = globals.bcolors
 print_modified = globals.print_modified
-
 stopped = False
 def print_box_news(index, title, url, author, time, score):
 	#print index,title,url,author,time,score
@@ -77,8 +76,10 @@ def print_page_news(page_index,count,start,end, index):
 
 		 	#prompt at every 4 items
 		if (index%4 is 0):
-		 	print bcolors.FAIL + "PROMPT:If you want to continue press ENTER else press q+ENTER to exit" + bcolors.ENDC
+		 	print bcolors.FAIL + "PROMPT:If you want to continue press ENTER else press q+ENTER to exit" + bcolors.ENDC 
 			x = raw_input()
+			globals.delete_line()
+			globals.delete_line()
 			if x is 'q':
 				print "Bye!"
 				global stopped

@@ -55,6 +55,8 @@ def print_page_jobs(last_id, index, count, start, end):
 			if index%5 is 0 and index != 0:
 				print bcolors.FAIL + "PROMPT:If you want to continue press ENTER else press q+ENTER to exit" + bcolors.ENDC
 				x = raw_input()
+				globals.delete_line()
+				globals.delete_line()
 				if x is 'q':
 					print "Bye!"
 					global stopped
