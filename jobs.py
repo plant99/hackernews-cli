@@ -11,7 +11,7 @@ import globals
 base_url = globals.base_url
 bcolors = globals.bcolors
 print_modified = globals.print_modified
-def print_box_jobs(index, title, url, time):
+def print_box_jobs(index, title, url, time, id):
 	#print index,title,url,author,time,score
 	print "+--------+"
 	print bcolors.OKGREEN + "|"+"S.No:"+ str(index) + ' '*(3-len(str(index))) + '|' + bcolors.ENDC
@@ -69,7 +69,7 @@ def print_page_jobs(last_id, index, count, start, end):
 			url = dataset1['href']
 			dataset2 = job_ad.next_sibling.find("td", class_="subtext").find("span").find("a").contents[0]
 			time = dataset2
-			print_box_jobs(index, title, url, time)
+			print_box_jobs(index, title, url, time, last_id)
 
 
 

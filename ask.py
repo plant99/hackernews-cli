@@ -14,12 +14,13 @@ print_modified = globals.print_modified
 
 
 stopped = False
-def print_box_ask(index, title, url, author, time, score):
+def print_box_ask(index, title, url, author, time, score, id):
 	#print index,title,url,author,time,score
 	print "+--------+"
 	print bcolors.OKGREEN + "|"+"S.No:"+ str(index) + ' '*(3-len(str(index))) + '|' + bcolors.ENDC
 	print("+--------+-------------------------------------------------+")
 	print_modified(title, 'yellow')
+	print_modified('ID: '+str(id), "okblue")
 	print("+----------------------------------------------------------+")
 	print bcolors.CYAN + url + bcolors.ENDC
 	print ''
@@ -65,7 +66,7 @@ def print_page_ask(page_index,count,start,end, index):
 		 	score = dataset2_block.find("span", class_="score").contents[0].split(' ')[0]
 		 	author = dataset2_block.find("a",class_="hnuser").contents[0]
 		 	time = dataset2_block.find("span",class_="age").contents[0].contents[0]
-			print_box_ask(index, title, link, author, time, score)
+			print_box_ask(index, title, link, author, time, score, id_single_ask)
 
 		 	index+=1
 

@@ -41,6 +41,8 @@ def print_modified(sentence, color):
 			print  bcolors.PURPLE +line_tbp+ bcolors.ENDC 
 		elif color is 'yellow':
 			print  bcolors.YELLOW +line_tbp+ bcolors.ENDC 	
+		elif color is 'okblue':
+			print bcolors.OKBLUE + line_tbp + bcolors.ENDC
 
 def delete_line():
 	sys.stdout.write(CURSOR_UP_ONE)

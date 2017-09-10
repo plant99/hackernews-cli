@@ -22,7 +22,6 @@ class Comment:
 	content_array=[]
 """
 def explore_handler(id, comments_depth):
-	print id, comments_depth
 	html = urlopen("https://news.ycombinator.com/item?id="+ str(id))
 	bs_obj = BeautifulSoup(html.read(), "lxml")
 	comments = bs_obj.find_all("tr", class_="comtr")
@@ -35,7 +34,9 @@ def explore_handler(id, comments_depth):
 	time = bs_obj.find("span", class_="age").text
 	print("+----------------------------------------------------------+")
 	print_modified(title, 'yellow')
+	print_modified('ID: '+str(id), "okblue")
 	print("+----------------------------------------------------------+")
+	print ''
 	print bcolors.CYAN + url + bcolors.ENDC
 	print ''
 	print bcolors.GREY_BACK_WHITE_P + ' Author:' + author + " Score:" + score + " Created:" + time + bcolors.ENDC
@@ -48,7 +49,8 @@ def explore_handler(id, comments_depth):
 		age = comment.find("span", class_="age").contents[0].contents[0]
 		content_array = comment.find("div", class_="comment").find("span")
 		x = get_text(content_array,'')
-		print_comment_modified(x, indent, username, age)
+		if(indent <= comments_depth):
+			print_comment_modified(x, indent, username, age)
 		if(i%4 == 0 and i!=0):
 			x = raw_input("PROMPT:Press q+ENTER to exit, and ENTER to continue!")
 			globals.delete_line()
@@ -75,3 +77,4 @@ def print_comment_modified(string, indent, username, age):
 		print sentence
 
 	print ""
+
