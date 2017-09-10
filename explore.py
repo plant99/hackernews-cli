@@ -42,6 +42,7 @@ def explore_handler(id, comments_depth):
 	print bcolors.GREY_BACK_WHITE_P + ' Author:' + author + " Score:" + score + " Created:" + time + bcolors.ENDC
 	print ""
 	print bcolors.HEADER + "COMMENTS:" + bcolors.ENDC
+	count = 0
 	for i in range(len(comments)):
 		comment = comments[i]
 		indent = int(comment.find("td", class_="ind").find("img")['width'])/40
@@ -49,10 +50,12 @@ def explore_handler(id, comments_depth):
 		age = comment.find("span", class_="age").contents[0].contents[0]
 		content_array = comment.find("div", class_="comment").find("span")
 		x = get_text(content_array,'')
-		if(indent <= comments_depth):
+		if(indent < comments_depth):
+			count+=1
 			print_comment_modified(x, indent, username, age)
-		if(i%4 == 0 and i!=0):
+		if(count%4 == 0 and count!=0):
 			x = raw_input("PROMPT:Press q+ENTER to exit, and ENTER to continue!")
+			count+=1
 			globals.delete_line()
 			if(x == 'q'):
 				print 'Bye'
