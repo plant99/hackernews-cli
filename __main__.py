@@ -46,11 +46,10 @@ elif dq == 'jobs':
 elif dq == 'explore':
 	if(args.id):
 		#call function
-		comments_depth = 0
 		if(args.comments_depth):
 			comments_depth = args.comments_depth
 		else:
-			comments_depth = 1
+			comments_depth = 1000
 		explore.explore_handler(args.id, comments_depth)
 	else:
 		print "Pass an integer with -i (or) --id"
